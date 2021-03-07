@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="MD Mizanur Rahman">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javaScript</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+			font-family:georgia;
+		}
+		body{
+			background:#37B4EA;
+		}
+		#wrapper{
+			max-width:80%;
+			height:100vh;
+			background:#ddd;
+			margin:0 auto;
+			padding:5px 20px 20px 20px;
+		}
+		h1{
+			font-family:"Times New Roman";
+			font-size:40px;
+			color:blue;
+			background:white;
+			margin-bottom:10px;
+			padding:20px;
+			border-radius:10px;
+		}
+		p{
+			font-size:25px;
+			line-height:40px;
+			color:#149EE1;
+			background:white;
+			padding:10px;
+		}
+		input{
+			font-size:20px;
+			width:300px;
+			line-height:40px;
+			padding:5px 5px 5px 20px;
+			margin-bottom:5px;
+			border:1px solid #ddd;
+		}
+		h2{
+			font-family:"Times New Roman";
+			background:white;
+			color:#149EE1;
+			padding:10px 20px 20px 20px;
+		}
+		#cost,#discount{
+			font-family:arial;
+			color:red;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrapper">
+		<h1>Calculation of Resident Hotel Cost :</h1>
+		<p>Day: 
+			<input id="Input" onchange="day()" type="number" placeholder="Enter Day">
+		</p>
+		<p>Discount is : 
+			<span id="discount"></span>
+		</p>
+		<h2>Your Total Cost : <span id="cost"></span></h2>
+	</div>
+	
+	<!--javaScript Section start Here-->
+    <script>
+        function day() {
+            var input = document.getElementById("Input").value;
+            var firstStage = input * 100;
+            var secondStage = (input * 80) + 200;
+            var thirdStage = (input * 50) + 650;
+            var fourthStage = input * 0;
+            var output = document.getElementById("cost");
+			
+            if (input <= 0) {
+                output.innerHTML = "Your input invalid";}
+            else {
+                if (input <= 10) {
+                    output.innerHTML = firstStage+ ' '+'Tk';
+					document.getElementById('discount').innerHTML="0%";
+                }
+                else {
+                    if (input <= 15) {
+                        output.innerHTML = secondStage+ ' '+'Tk';
+						document.getElementById('discount').innerHTML="20%";
+					}
+                    else {
+                        if (input <= 20) {
+                            output.innerHTML = thirdStage+ ' '+'Tk';
+							document.getElementById('discount').innerHTML="50%";
+						}
+                        else {
+                            if (input <= 25) {
+                                output.innerHTML = fourthStage+ ' '+'Tk';
+								document.getElementById('discount').innerHTML="100%";
+							}
+                            else {
+                                output.innerHTML = firstStage+ ' '+'Tk';
+								document.getElementById('discount').innerHTML="0%";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
